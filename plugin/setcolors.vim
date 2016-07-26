@@ -18,7 +18,7 @@ endif
 let loaded_setcolors = 1
 
 " empty list to loop through all installed colorschemes
-let s:mycolors = []
+let s:mycolors = ['delek', 'slate', 'gotham256', 'sourcerer', 'morning', 'elflord']
 " fill with your favourites colorschemes to loop `only` through them
 "let s:mycolors = ['slate', 'torte', 'darkblue', 'delek', 'murphy', 'elflord', 'pablo', 'koehler']  " colorscheme names that we use to set color
 
