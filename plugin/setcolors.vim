@@ -1,9 +1,9 @@
 " Change the color scheme from a list of color scheme names.
 " Version 2010-09-12 from http://vim.wikia.com/wiki/VimTip341
 " Press key:
-"   F8                next scheme
-"   Shift-F8          previous scheme
-"   Alt-F8            random scheme
+"   F7          next scheme
+"   F6          previous scheme
+"   Shift-F7    random scheme
 " Set the list of color schemes used by the above (default is 'all'):
 "   :SetColors all              (all $VIMRUNTIME/colors/*.vim)
 "   :SetColors my               (names built into script)
