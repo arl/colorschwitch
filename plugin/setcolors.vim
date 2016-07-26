@@ -16,7 +16,11 @@ if v:version < 700 || exists('loaded_setcolors') || &cp
 endif
 
 let loaded_setcolors = 1
-let s:mycolors = ['slate', 'torte', 'darkblue', 'delek', 'murphy', 'elflord', 'pablo', 'koehler']  " colorscheme names that we use to set color
+
+" loop on all installed colorschemes
+let s:mycolors = []
+" uncomment this and replace with your favourites ones to loop `only` on them
+"let s:mycolors = ['slate', 'torte', 'darkblue', 'delek', 'murphy', 'elflord', 'pablo', 'koehler']  " colorscheme names that we use to set color
 
 " Set list of color scheme names that we will use, except
 " argument 'now' actually changes the current color scheme.
