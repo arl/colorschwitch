@@ -1,9 +1,16 @@
 " Change the color scheme from a list of color scheme names.
 " Version 2010-09-12 from http://vim.wikia.com/wiki/VimTip341
+" Version 2016-08-01 from http://github.com/aurelien-rainone/colorschwitch
+"
+" Define, in your .vimrc, the list of `switchable` color schemes, example:
+" let g:colorschwitch_schemes = ['slate', 'torte', 'elflord', 'morning', 'koehler']
+"
 " Press key:
 "   F7          next scheme
 "   F6          previous scheme
 "   Shift-F7    random scheme
+" 
+" Or use :SetColors as follows:
 " Set the list of color schemes used by the above (default is 'all'):
 "   :SetColors all              (all $VIMRUNTIME/colors/*.vim)
 "   :SetColors my               (names built into script)
