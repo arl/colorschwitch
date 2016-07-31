@@ -18,9 +18,9 @@ endif
 
 let loaded_setcolors = 1
 
-if !exists("g:mycolors")
+if !exists("g:colorschwitch_schemes")
     " empty list to loop through all installed colorschemes
-    let g:mycolors = []
+    let g:colorschwitch_schemes = []
 endif
 
 " Set list of color scheme names that we will use, except
@@ -29,24 +29,24 @@ function! s:SetColors(args)
   if len(a:args) == 0
     echo 'Current color scheme names:'
     let i = 0
-    while i < len(g:mycolors)
-      echo '  '.join(map(g:mycolors[i : i+4], 'printf("%-14s", v:val)'))
+    while i < len(g:colorschwitch_schemes)
+      echo '  '.join(map(g:colorschwitch_schemes[i : i+4], 'printf("%-14s", v:val)'))
       let i += 5
     endwhile
   elseif a:args == 'all'
     let paths = split(globpath(&runtimepath, 'colors/*.vim'), "\n")
-    let g:mycolors = map(paths, 'fnamemodify(v:val, ":t:r")')
+    let g:colorschwitch_schemes = map(paths, 'fnamemodify(v:val, ":t:r")')
     echo 'List of colors set from all installed color schemes'
   elseif a:args == 'my'
     let c1 = 'default elflord peachpuff desert256 breeze morning'
     let c2 = 'darkblue gothic aqua earth black_angus relaxedgreen'
     let c3 = 'darkblack freya motus impact less chocolateliquor'
-    let g:mycolors = split(c1.' '.c2.' '.c3)
+    let g:colorschwitch_schemes = split(c1.' '.c2.' '.c3)
     echo 'List of colors set from built-in names'
   elseif a:args == 'now'
     call s:HourColor()
   else
-    let g:mycolors = split(a:args)
+    let g:colorschwitch_schemes = split(a:args)
     echo 'List of colors set from argument (space-separated names)'
   endif
 endfunction
@@ -63,31 +63,31 @@ endfunction
 " Helper function for NextColor(), allows echoing of the color name to be
 " disabled.
 function! s:NextColor(how, echo_color)
-  if len(g:mycolors) == 0
+  if len(g:colorschwitch_schemes) == 0
     call s:SetColors('all')
   endif
   if exists('g:colors_name')
-    let current = index(g:mycolors, g:colors_name)
+    let current = index(g:colorschwitch_schemes, g:colors_name)
   else
     let current = -1
   endif
   let missing = []
   let how = a:how
-  for i in range(len(g:mycolors))
+  for i in range(len(g:colorschwitch_schemes))
     if how == 0
-      let current = localtime() % len(g:mycolors)
+      let current = localtime() % len(g:colorschwitch_schemes)
       let how = 1  " in case random color does not exist
     else
       let current += how
-      if !(0 <= current && current < len(g:mycolors))
-        let current = (how>0 ? 0 : len(g:mycolors)-1)
+      if !(0 <= current && current < len(g:colorschwitch_schemes))
+        let current = (how>0 ? 0 : len(g:colorschwitch_schemes)-1)
       endif
     endif
     try
-      execute 'colorscheme '.g:mycolors[current]
+      execute 'colorscheme '.g:colorschwitch_schemes[current]
       break
     catch /E185:/
-      call add(missing, g:mycolors[current])
+      call add(missing, g:colorschwitch_schemes[current])
     endtry
   endfor
   redraw
